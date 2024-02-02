@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link  rel="stylesheet" link="cal.css">
+    <link  rel="script" link="cal.js">
+    <title>Document</title>
+    <style>.con{
+        width: 600px;
+        height: 600px;
+        display: grid;
+        grid-template-columns: 0,5fr 0,5fr 0,5fr 0,5fr;
+        grid-template-rows: 0,5fr 0,5fr 0,5fr 0,5fr;
+        
+    }
+    .cell{
+        border: 1px solid black;
+        border-radius: 20px;
+        font-size: 24px;
+        text-align: center;
+        align-items: center;
+        font-size: 24px;
+        background-color:lightblue;
+    }
+    #cellscre{
+        display: flex;
+        grid-column: 1/5;
+        background: linear-gradient( 45deg, rgb(72, 199, 167), rgb(93, 233, 116), rgb(69, 189, 115), rgb(80, 116, 33) );
+        font-size: 40px;
+        flex-direction: row-reverse;
+        padding: 20px;
+    }
+    .main{
+        display: flex;
+        justify-content: space-around;
+        margin-top: 50px;
+    }
+</style>
+</head>
+<body>
+    <div class="main">
+    <div class="con">
+        <div class="cell" onclick="print()" id="cellscre"></div>
+        <div  class="cell" onclick="clear1('cellscre')" id="ac" >AC</div>
+        <div class="cell" onclick="div()" id="cell">/</div>
+        <div class="cell" onclick="multi()" id="cell">*</div>
+        <div class="cell" onclick="sub()" id="cell-">-</div>
+        <div class="cell" onclick="print('cell7')" id="cell7">7</div>
+        <div class="cell" onclick="print('cell8')" id="cell8">8</div>
+        <div class="cell" onclick="print('cell9')" id="cell9">9</div>
+        <div class="cell" onclick="add()" id="">+</div>
+        <div class="cell" onclick="print('cell4')" id="cell">4</div>
+        <div class="cell" onclick="print('cell5')" id="cell5">5</div>
+        <div class="cell" onclick="print('cell6')" id="cell6">6</div>
+        <div class="cell" onclick="" id="cellok">ok</div>
+        <div class="cell" onclick="print('cell1')" id="cell1">1</div>
+        <div class="cell" onclick="print('cell2')" id="cell2">2</div>
+        <div class="cell" onclick="print('cell3')" id="cell3">3</div>
+        <div class="cell"  id=""></div>
+        <div class="cell"  id=""></div>
+        <div class="cell" onclick="print('cell0')" id="cell0">0</div>
+        <div class="cell"  id=""></div>
+       
+    </div>
+    </div>
+</body>
+<script>
+    function clear1(id){
+        document.getElementById(id).innerHTML='';
+        u=undefined;
+        }
+         function print(id){
+         let n=document.getElementById(id).textContent; 
+         var x=n;
+         console.log(n);
+          buffer(x);
+         } 
+         function buffer(x){
+            let z=document.getElementById("cellscre");
+            z.innerHTML+=x;
+            console.log(z)
+                }      
+        let u=Number;
+        function multi(){
+                let n=document.getElementById("cellscre").textContent;
+                 u= Number(n);
+                document.getElementById("cellscre").innerHTML='';
+                document.getElementById("cellok").addEventListener('click', calm)
+         }
+        function calm(){
+                event.preventDefault(); 
+                calmulti(); 
+            };
+        function calmulti(){
+            let n=document.getElementById("cellscre").textContent;
+            let p= Number(n);
+            c=u*p
+            document.getElementById("cellscre").innerHTML=c;
+         }
+         function add(){
+            let n=document.getElementById("cellscre").textContent;
+             u= Number(n);
+            document.getElementById("cellscre").innerHTML='';
+            document.getElementById("cellok").addEventListener('click', cala);
+         }
+        function cala(){
+                event.preventDefault(); 
+                caladd(); 
+            };
+        function caladd(){
+            let n=document.getElementById("cellscre").textContent;
+            let p= Number(n);
+            c=u+p;
+            document.getElementById("cellscre").innerHTML=c;
+        }
+    
+    
+        function sub(){
+            let n=document.getElementById("cellscre").textContent;
+            u= Number(n);
+            document.getElementById("cellscre").innerHTML='';
+            document.getElementById("cellok").addEventListener('click', cals)
+        }
+        function cals(){
+                event.preventDefault(); 
+                calsub(); 
+            };
+        function calsub(){
+            let n=document.getElementById("cellscre").textContent;
+            let p= Number(n);
+            c=u-p
+            document.getElementById("cellscre").innerHTML=c;
+        }
+        function div(){
+            let n=document.getElementById("cellscre").textContent;
+            u= Number(n);
+            document.getElementById("cellscre").innerHTML='';
+            document.getElementById("cellok").addEventListener('click', cald)
+        }
+        function cald(){
+            event.preventDefault(); 
+            caldiv(); 
+        };
+        function caldiv(){
+        let n=document.getElementById("cellscre").textContent;
+        let p= Number(n);
+        c=u/p;
+        document.getElementById("cellscre").innerHTML=c;
+        }
+    
+</script>
+</html>
